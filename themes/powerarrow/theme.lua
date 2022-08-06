@@ -112,7 +112,7 @@ local separators = lain.util.separators
 --     color_inactive = theme.bg_focus
 -- }
 
-local mytextclock = wibox.widget.textclock("%a %b %d,%l:%M %P ",15)
+local mytextclock = wibox.widget.textclock("%a %b %d, %l:%M %P ",15)
 
 -- Calendar
 -- theme.cal = lain.widget.cal({
