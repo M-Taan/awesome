@@ -98,9 +98,6 @@ beautiful.init(string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv
 
 beautiful.wallpaper = (gears.filesystem.get_configuration_dir() .. "alena-aenami-witcher-1k.jpg")
 
-beautiful.useless_gap = 5
-beautiful.gap_single_client = true
-
 -- allow tags to be clickable
 awful.util.taglist_buttons = mytable.join(
     awful.button({ }, 1, function(t) t:view_only() end),
