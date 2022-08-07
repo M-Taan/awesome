@@ -31,11 +31,6 @@ theme.border_width                              = dpi(2)
 theme.border_normal                             = "#3F3F3F"
 theme.border_focus                              = "#6F6F6F"
 theme.border_marked                             = "#CC9393"
-theme.titlebar_bg_focus                         = "#3F3F3F"
-theme.titlebar_bg_normal                        = "#3F3F3F"
-theme.titlebar_bg_focus                         = theme.bg_focus
-theme.titlebar_bg_normal                        = theme.bg_normal
-theme.titlebar_fg_focus                         = theme.fg_focus
 theme.menu_height                               = dpi(16)
 theme.menu_width                                = dpi(140)
 theme.menu_submenu_icon                         = theme.dir .. "/icons/submenu.png"
@@ -288,11 +283,11 @@ function theme.at_screen_connect(s)
             --pl(wibox.widget { mpdicon, theme.mpd.widget, layout = wibox.layout.align.horizontal }, "#343434"),
             --pl(wibox.widget { mailicon, mail and theme.mail.widget, layout = wibox.layout.align.horizontal }, "#343434"),
             pl(wibox.widget { memicon, mem.widget, layout = wibox.layout.align.horizontal }, "#00BBC0"),
-            pl(wibox.widget { cpuicon, cpu.widget, layout = wibox.layout.align.horizontal }, "#28282B"),
+            pl(wibox.widget { cpuicon, cpu.widget, layout = wibox.layout.align.horizontal }, "#525253"),
             --pl(wibox.widget { fsicon, theme.fs and theme.fs.widget, layout = wibox.layout.align.horizontal }, "#CB755B"),
             pl(wibox.widget { volicon, theme.volume.widget, layout = wibox.layout.align.horizontal }, "#E91E63"),
             pl(wibox.widget { baticon, bat.widget, layout = wibox.layout.align.horizontal }, "#00BBC0"),
-            pl(wibox.widget { neticon, net.widget, layout = wibox.layout.align.horizontal }, "#28282B"),
+            pl(wibox.widget { neticon, net.widget, layout = wibox.layout.align.horizontal }, "#525253"),
             --pl(binclock.widget, "#777E76"),
             pl(mytextclock, "#E91E63"),
             s.mylayoutbox,
