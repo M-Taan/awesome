@@ -72,91 +72,18 @@ theme.widget_vol                                = theme.dir .. "/icons/vol.png"
 theme.widget_vol_low                            = theme.dir .. "/icons/vol_low.png"
 theme.widget_vol_no                             = theme.dir .. "/icons/vol_no.png"
 theme.widget_vol_mute                           = theme.dir .. "/icons/vol_mute.png"
-theme.widget_mail                               = theme.dir .. "/icons/mail.png"
-theme.widget_mail_on                            = theme.dir .. "/icons/mail_on.png"
-theme.widget_task                               = theme.dir .. "/icons/task.png"
-theme.widget_scissors                           = theme.dir .. "/icons/scissors.png"
 theme.tasklist_plain_task_name                  = true
 theme.tasklist_disable_icon                     = true
-theme.useless_gap                               = 0
-theme.titlebar_close_button_focus               = theme.dir .. "/icons/titlebar/close_focus.png"
-theme.titlebar_close_button_normal              = theme.dir .. "/icons/titlebar/close_normal.png"
-theme.titlebar_ontop_button_focus_active        = theme.dir .. "/icons/titlebar/ontop_focus_active.png"
-theme.titlebar_ontop_button_normal_active       = theme.dir .. "/icons/titlebar/ontop_normal_active.png"
-theme.titlebar_ontop_button_focus_inactive      = theme.dir .. "/icons/titlebar/ontop_focus_inactive.png"
-theme.titlebar_ontop_button_normal_inactive     = theme.dir .. "/icons/titlebar/ontop_normal_inactive.png"
-theme.titlebar_sticky_button_focus_active       = theme.dir .. "/icons/titlebar/sticky_focus_active.png"
-theme.titlebar_sticky_button_normal_active      = theme.dir .. "/icons/titlebar/sticky_normal_active.png"
-theme.titlebar_sticky_button_focus_inactive     = theme.dir .. "/icons/titlebar/sticky_focus_inactive.png"
-theme.titlebar_sticky_button_normal_inactive    = theme.dir .. "/icons/titlebar/sticky_normal_inactive.png"
-theme.titlebar_floating_button_focus_active     = theme.dir .. "/icons/titlebar/floating_focus_active.png"
-theme.titlebar_floating_button_normal_active    = theme.dir .. "/icons/titlebar/floating_normal_active.png"
-theme.titlebar_floating_button_focus_inactive   = theme.dir .. "/icons/titlebar/floating_focus_inactive.png"
-theme.titlebar_floating_button_normal_inactive  = theme.dir .. "/icons/titlebar/floating_normal_inactive.png"
-theme.titlebar_maximized_button_focus_active    = theme.dir .. "/icons/titlebar/maximized_focus_active.png"
-theme.titlebar_maximized_button_normal_active   = theme.dir .. "/icons/titlebar/maximized_normal_active.png"
-theme.titlebar_maximized_button_focus_inactive  = theme.dir .. "/icons/titlebar/maximized_focus_inactive.png"
-theme.titlebar_maximized_button_normal_inactive = theme.dir .. "/icons/titlebar/maximized_normal_inactive.png"
-
--- Gaps
-theme.useless_gap = 5
+theme.useless_gap                               = 5
 
 local markup = lain.util.markup
 local separators = lain.util.separators
-
--- Binary clock
--- local binclock = require("themes.powerarrow.binclock"){
---     height = dpi(32),
---     show_seconds = true,
---     color_active = theme.fg_normal,
---     color_inactive = theme.bg_focus
--- }
 
 local mytextclock = wibox.widget {
     format = "%a %b %d, %l:%M %p ",
     widget = wibox.widget.textclock,
     font = theme.font
 }
-
--- Calendar
--- theme.cal = lain.widget.cal({
---     cal = "cal --color=always",
---     attach_to = { binclock.widget },
---     notification_preset = {
---         font = "Terminus 10",
---         fg   = theme.fg_normal,
---         bg   = theme.bg_normal
---     }
--- })
-
--- Taskwarrior
--- local task = wibox.widget.imagebox(theme.widget_task)
--- lain.widget.contrib.task.attach(task, {
---     -- do not colorize output
---     show_cmd = "task | sed -r 's/\\x1B\\[([0-9]{1,2}(;[0-9]{1,2})?)?[mGK]//g'"
--- })
--- task:buttons(my_table.join(awful.button({}, 1, lain.widget.contrib.task.prompt)))
-
--- Mail IMAP check
---[[ commented because it needs to be set before use
-local mailicon = wibox.widget.imagebox(theme.widget_mail)
-mailicon:buttons(my_table.join(awful.button({ }, 1, function () awful.spawn(mail) end)))
-theme.mail = lain.widget.imap({
-    timeout  = 180,
-    server   = "server",
-    mail     = "mail",
-    password = "keyring get mail",
-    settings = function()
-        if mailcount > 0 then
-            widget:set_text(" " .. mailcount .. " ")
-            mailicon:set_image(theme.widget_mail_on)
-        else
-            widget:set_text("")
-            mailicon:set_image(theme.widget_mail)
-        end
-    end
-})
---]]
 
 -- MPD
 -- local musicplr = awful.util.terminal .. " -title Music -g 130x34-320+16 -e ncmpcpp"
@@ -208,18 +135,6 @@ local cpu = lain.widget.cpu({
     end
 })
 
--- / fs
-local fsicon = wibox.widget.imagebox(theme.widget_hdd)
---[[ commented because it needs Gio/Glib >= 2.54
-theme.fs = lain.widget.fs({
-    notification_preset = { fg = theme.fg_normal, bg = theme.bg_normal, font = "Terminus 10" },
-    settings = function()
-        local fsp = string.format(" %3.2f %s ", fs_now["/"].free, fs_now["/"].units)
-        widget:set_markup(markup.font(theme.font, fsp))
-    end
-})
---]]
-
 -- Battery
 local baticon = wibox.widget.imagebox(theme.widget_battery)
 local bat = lain.widget.bat({
@@ -243,6 +158,34 @@ local bat = lain.widget.bat({
         end
     end
 })
+
+-- Volume
+local volicon = wibox.widget.imagebox(theme.widget_vol)
+theme.volume = lain.widget.alsa({
+    settings = function()
+        if volume_now.status == "off" then
+            volicon:set_image(theme.widget_vol_mute)
+        elseif tonumber(volume_now.level) == 0 then
+            volicon:set_image(theme.widget_vol_no)
+        elseif tonumber(volume_now.level) <= 50 then
+            volicon:set_image(theme.widget_vol_low)
+        else
+            volicon:set_image(theme.widget_vol)
+        end
+        widget:set_markup(markup.font(theme.font, " " .. volume_now.level .. "% "))
+    end
+})
+theme.volume.widget:buttons(awful.util.table.join(
+                               awful.button({}, 4, function ()
+                                     awful.util.spawn("amixer set Master 1%+")
+                                     theme.volume.update()
+                               end),
+                               awful.button({}, 5, function ()
+                                     awful.util.spawn("amixer set Master 1%-")
+                                     theme.volume.update()
+                               end)
+))
+
 
 -- Net
 local neticon = wibox.widget.imagebox(theme.widget_net)
@@ -347,6 +290,7 @@ function theme.at_screen_connect(s)
             pl(wibox.widget { memicon, mem.widget, layout = wibox.layout.align.horizontal }, "#777E76"),
             pl(wibox.widget { cpuicon, cpu.widget, layout = wibox.layout.align.horizontal }, "#4B696D"),
             --pl(wibox.widget { fsicon, theme.fs and theme.fs.widget, layout = wibox.layout.align.horizontal }, "#CB755B"),
+            pl(wibox.widget { volicon, theme.volume.widget, layout = wibox.layout.align.horizontal }, "#777E76"),
             pl(wibox.widget { baticon, bat.widget, layout = wibox.layout.align.horizontal }, "#8DAA9A"),
             pl(wibox.widget { neticon, net.widget, layout = wibox.layout.align.horizontal }, "#C0C0A2"),
             --pl(binclock.widget, "#777E76"),
