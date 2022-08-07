@@ -15,7 +15,7 @@ local math, string, os = math, string, os
 local my_table = awful.util.table or gears.table -- 4.{0,1} compatibility
 
 local theme                                     = {}
-theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/powerarrow"
+theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/arrowing"
 theme.wallpaper                                 = theme.dir .. "/wall.png"
 theme.font                                      = "Terminus 12"
 theme.fg_normal                                 = "#FEFEFE"
@@ -287,14 +287,14 @@ function theme.at_screen_connect(s)
             wibox.widget.systray(),
             --pl(wibox.widget { mpdicon, theme.mpd.widget, layout = wibox.layout.align.horizontal }, "#343434"),
             --pl(wibox.widget { mailicon, mail and theme.mail.widget, layout = wibox.layout.align.horizontal }, "#343434"),
-            pl(wibox.widget { memicon, mem.widget, layout = wibox.layout.align.horizontal }, "#777E76"),
-            pl(wibox.widget { cpuicon, cpu.widget, layout = wibox.layout.align.horizontal }, "#4B696D"),
+            pl(wibox.widget { memicon, mem.widget, layout = wibox.layout.align.horizontal }, "#00BBC0"),
+            pl(wibox.widget { cpuicon, cpu.widget, layout = wibox.layout.align.horizontal }, "#28282B"),
             --pl(wibox.widget { fsicon, theme.fs and theme.fs.widget, layout = wibox.layout.align.horizontal }, "#CB755B"),
-            pl(wibox.widget { volicon, theme.volume.widget, layout = wibox.layout.align.horizontal }, "#777E76"),
-            pl(wibox.widget { baticon, bat.widget, layout = wibox.layout.align.horizontal }, "#8DAA9A"),
-            pl(wibox.widget { neticon, net.widget, layout = wibox.layout.align.horizontal }, "#C0C0A2"),
+            pl(wibox.widget { volicon, theme.volume.widget, layout = wibox.layout.align.horizontal }, "#E91E63"),
+            pl(wibox.widget { baticon, bat.widget, layout = wibox.layout.align.horizontal }, "#00BBC0"),
+            pl(wibox.widget { neticon, net.widget, layout = wibox.layout.align.horizontal }, "#28282B"),
             --pl(binclock.widget, "#777E76"),
-            pl(mytextclock, "#777E76"),
+            pl(mytextclock, "#E91E63"),
             s.mylayoutbox,
         },
     }

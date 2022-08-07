@@ -61,7 +61,7 @@ end
 
 -- {{{ Variable definitions
 
-local chosen_theme = "powerarrow"
+local chosen_theme = "arrowing"
 local modkey       = "Mod4"
 local altkey       = "Mod1"
 local terminal     = "alacritty"
