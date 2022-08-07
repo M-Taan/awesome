@@ -133,24 +133,24 @@ awful.util.tasklist_buttons = mytable.join(
 -- {{{ Menu
 
 -- Create a launcher widget and a main menu
-local myawesomemenu = {
-   { "Hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
-   { "Manual", string.format("%s -e man awesome", terminal) },
-   { "Edit config", string.format("%s -e %s %s", terminal, editor, awesome.conffile) },
-   { "Restart", awesome.restart },
-   { "Quit", function() awesome.quit() end },
-}
+-- local myawesomemenu = {
+--    { "Hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
+--    { "Manual", string.format("%s -e man awesome", terminal) },
+--    { "Edit config", string.format("%s -e %s %s", terminal, editor, awesome.conffile) },
+--    { "Restart", awesome.restart },
+--    { "Quit", function() awesome.quit() end },
+-- }
 
-awful.util.mymainmenu = freedesktop.menu.build {
-    before = {
-        { "Awesome", myawesomemenu, beautiful.awesome_icon },
-        -- other triads can be put here
-    },
-    after = {
-        { "Open terminal", terminal },
-        -- other triads can be put here
-    }
-}
+-- awful.util.mymainmenu = freedesktop.menu.build {
+--     before = {
+--         { "Awesome", myawesomemenu, beautiful.awesome_icon },
+--         -- other triads can be put here
+--     },
+--     after = {
+--         { "Open terminal", terminal },
+--         -- other triads can be put here
+--     }
+-- }
 
 -- Hide the menu when the mouse leaves it
 --[[
@@ -209,7 +209,7 @@ awful.screen.connect_for_each_screen(function(s) beautiful.at_screen_connect(s) 
 
 -- {{{ Mouse bindings
 root.buttons(gears.table.join(
-    awful.button({ }, 3, function () mymainmenu:toggle() end),
+    --awful.button({ }, 3, function () mymainmenu:toggle() end),
     awful.button({ }, 4, awful.tag.viewnext),
     awful.button({ }, 5, awful.tag.viewprev)
 ))
@@ -238,9 +238,6 @@ globalkeys = gears.table.join(
         end,
         {description = "focus previous by index", group = "client"}
     ),
-    awful.key({ modkey,           }, "w", function () mymainmenu:show() end,
-              {description = "show main menu", group = "awesome"}),
-
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end,
               {description = "swap with next client by index", group = "client"}),
@@ -314,7 +311,17 @@ globalkeys = gears.table.join(
               {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"})
+       {description = "show the menubar", group = "launcher"}),
+
+    -- Standalone programs
+    awful.key({ modkey, "Shift"}, "a", function () awful.spawn("pavucontrol") end,
+       {description = "open pavucontrol", group = "Standalone Programs"}),
+    
+    awful.key({ modkey, "Shift"}, "n", function () awful.spawn("nm-connection-editor") end,
+       {description = "open networks editor", group = "Standalone Programs"}),
+
+    awful.key({ modkey, "Shift"}, "b", function () awful.spawn(browser) end,
+       {description = "open browser", group = "Standalone Programs"})
 )
 
 clientkeys = gears.table.join(
