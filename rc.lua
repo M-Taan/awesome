@@ -96,7 +96,7 @@ awful.layout.layouts = {
 -- Load theme
 beautiful.init(string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), chosen_theme))
 
-beautiful.wallpaper = (gears.filesystem.get_configuration_dir() .. "alena-aenami-witcher-1k.jpg")
+beautiful.wallpaper = (gears.filesystem.get_configuration_dir() .. "alena-aenami-away-1k.jpg")
 
 -- allow tags to be clickable
 awful.util.taglist_buttons = mytable.join(
