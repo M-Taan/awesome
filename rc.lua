@@ -313,6 +313,12 @@ globalkeys = gears.table.join(
     awful.key({ modkey }, "p", function() menubar.show() end,
        {description = "show the menubar", group = "launcher"}),
 
+     -- Screen brightness
+    awful.key({ }, "XF86MonBrightnessUp", function () os.execute("light -A 10") end,
+              {description = "+10% brightness", group = "hotkeys"}),
+    awful.key({ }, "XF86MonBrightnessDown", function () os.execute("light -U 10") end,
+              {description = "-10% brightness", group = "hotkeys"}),
+
     -- Standalone programs
     awful.key({ modkey, "Shift"}, "a", function () awful.spawn("pavucontrol") end,
        {description = "open pavucontrol", group = "Standalone Programs"}),

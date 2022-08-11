@@ -208,6 +208,7 @@ end)
 
 -- Separators
 local arrow = separators.arrow_left
+local space_sep = wibox.widget.textbox("  ")
 
 function theme.powerline_rl(cr, width, height)
     local arrow_depth, offset = height/2, 0
@@ -280,6 +281,7 @@ function theme.at_screen_connect(s)
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             wibox.widget.systray(),
+            space_sep,
             --pl(wibox.widget { mpdicon, theme.mpd.widget, layout = wibox.layout.align.horizontal }, "#343434"),
             --pl(wibox.widget { mailicon, mail and theme.mail.widget, layout = wibox.layout.align.horizontal }, "#343434"),
             pl(wibox.widget { memicon, mem.widget, layout = wibox.layout.align.horizontal }, "#00BBC0"),
