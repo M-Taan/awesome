@@ -70,6 +70,7 @@ theme.widget_vol_mute                           = theme.dir .. "/icons/vol_mute.
 theme.tasklist_plain_task_name                  = true
 theme.tasklist_disable_icon                     = true
 theme.useless_gap                               = 5
+theme.systray_icon_spacing                      = 5
 
 local markup = lain.util.markup
 local separators = lain.util.separators
