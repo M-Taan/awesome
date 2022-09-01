@@ -319,6 +319,13 @@ globalkeys = gears.table.join(
     awful.key({ }, "XF86MonBrightnessDown", function () os.execute("light -U 10") end,
               {description = "-10% brightness", group = "hotkeys"}),
 
+    -- volume control
+    awful.key({}, "XF86AudioRaiseVolume", function() os.execute ("amixer -D pulse sset Master 5%+") end,
+       {description = "+5% volume", group = "hotkeys"}),
+
+        awful.key({}, "XF86AudioLowerVolume", function() os.execute ("amixer -D pulse sset Master 5%-") end,
+       {description = "+5% volume", group = "hotkeys"}),
+    
     -- Standalone programs
     awful.key({ modkey, "Shift"}, "a", function () awful.spawn("pavucontrol") end,
        {description = "open pavucontrol", group = "Standalone Programs"}),
@@ -563,3 +570,6 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+
+-- startup stuff
+awful.spawn.with_shell("blueman-applet")

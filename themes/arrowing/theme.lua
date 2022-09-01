@@ -173,11 +173,11 @@ theme.volume = lain.widget.alsa({
 })
 theme.volume.widget:buttons(awful.util.table.join(
                                awful.button({}, 4, function ()
-                                     awful.util.spawn("amixer set Master 1%+")
+                                     os.execute("amixer set Master 1%+")
                                      theme.volume.update()
                                end),
                                awful.button({}, 5, function ()
-                                     awful.util.spawn("amixer set Master 1%-")
+                                     os.execute("amixer set Master 1%-")
                                      theme.volume.update()
                                end)
 ))
@@ -190,10 +190,10 @@ local net = lain.widget.net({
        widget:set_markup(markup.fontfg(theme.font, "#FEFEFE", " " .. net_now.received .. " ↓↑ " .. net_now.sent .. " "))
        widget:buttons(my_table.join(
                          awful.button({}, 1,
-                            function() awful.spawn("nm-connection-editor") end)))
+                            function() awful.spawn.with_shell("nm-applet") end)))
        neticon:buttons(my_table.join(
                          awful.button({}, 1,
-                            function() awful.spawn("nm-connection-editor") end)))
+                            function() awful.spawn.with_shell("nm-applet") end)))
     end
 })
 
