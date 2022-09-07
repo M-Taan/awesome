@@ -79,7 +79,7 @@ awful.layout.layouts = {
     awful.layout.suit.tile.left,
     awful.layout.suit.tile.bottom,
     awful.layout.suit.tile.top,
-    --awful.layout.suit.floating,
+    awful.layout.suit.floating,
     --awful.layout.suit.fair,
     --awful.layout.suit.fair.horizontal,
     --awful.layout.suit.spiral,
@@ -96,7 +96,7 @@ awful.layout.layouts = {
 -- Load theme
 beautiful.init(string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), chosen_theme))
 
-beautiful.wallpaper = (gears.filesystem.get_configuration_dir() .. "alena-aenami-away-1k.jpg")
+beautiful.wallpaper = (gears.filesystem.get_configuration_dir() .. "alena-aenami-ice1920.jpg")
 
 -- allow tags to be clickable
 awful.util.taglist_buttons = mytable.join(
@@ -334,7 +334,10 @@ globalkeys = gears.table.join(
        {description = "open networks editor", group = "Standalone Programs"}),
 
     awful.key({ modkey, "Shift"}, "b", function () awful.spawn(browser) end,
-       {description = "open browser", group = "Standalone Programs"})
+       {description = "open browser", group = "Standalone Programs"}),
+
+    awful.key({ modkey, "Shift"}, "e", function () awful.spawn("emacsclient -c /home/mmt/") end,
+       {description = "open emacs", group = "Standalone Programs"})
 )
 
 clientkeys = gears.table.join(
@@ -573,3 +576,4 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 -- startup stuff
 awful.spawn.with_shell("blueman-applet")
+awful.spawn.with_shell("/usr/bin/emacs --daemon &")
