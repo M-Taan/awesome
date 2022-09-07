@@ -1,6 +1,7 @@
 [submodule "lain"]
 	path = lain
 	url = https://github.com/lcpz/lain.git
+        ignore = dirty
 
 [submodule "freedesktop"]
 	path = freedesktop

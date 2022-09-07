@@ -337,7 +337,10 @@ globalkeys = gears.table.join(
        {description = "open browser", group = "Standalone Programs"}),
 
     awful.key({ modkey, "Shift"}, "e", function () awful.spawn("emacsclient -c /home/mmt/") end,
-       {description = "open emacs", group = "Standalone Programs"})
+       {description = "open emacs", group = "Standalone Programs"}),
+
+   awful.key({}, "Print", function () awful.spawn.with_shell("maim -s -u $HOME/Pictures/screenshots/$(date +%s).png && notify-send  --icon=$HOME/.config/awesome/common/custom_notification_icon.png 'saved and copied to the clipboard'") end,
+      {description = "takes a screenshot using mime", group = "hotkeys"})
 )
 
 clientkeys = gears.table.join(
