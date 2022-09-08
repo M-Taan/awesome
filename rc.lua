@@ -96,7 +96,7 @@ awful.layout.layouts = {
 -- Load theme
 beautiful.init(string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), chosen_theme))
 
-beautiful.wallpaper = (gears.filesystem.get_configuration_dir() .. "alena-aenami-ice1920.jpg")
+beautiful.wallpaper = (gears.filesystem.get_configuration_dir() .. "alena-aenami-mountains2k.jpg")
 
 -- allow tags to be clickable
 awful.util.taglist_buttons = mytable.join(
@@ -338,9 +338,13 @@ globalkeys = gears.table.join(
 
     awful.key({ modkey, "Shift"}, "e", function () awful.spawn("emacsclient -c /home/mmt/") end,
        {description = "open emacs", group = "Standalone Programs"}),
-
-   awful.key({}, "Print", function () awful.spawn.with_shell("maim -s -u $HOME/Pictures/screenshots/$(date +%s).png && notify-send  --icon=$HOME/.config/awesome/common/custom_notification_icon.png 'saved and copied to the clipboard'") end,
-      {description = "takes a screenshot using mime", group = "hotkeys"})
+       
+   -- Misc
+   awful.key({}, "Print", function () awful.spawn.with_shell("maim -s -u $HOME/Pictures/screenshots/$(date +%s).png && notify-send  --icon=$HOME/.config/awesome/common/custom          _notification_icon.png 'saved and copied to the clipboard'") end,
+      {description = "takes a screenshot using mime", group = "hotkeys"}),
+      
+   awful.key({ modkey }, "Delete", function () awful.spawn("dm-tool lock") end,
+       {description = "lock screen", group = "hotkeys"})
 )
 
 clientkeys = gears.table.join(
