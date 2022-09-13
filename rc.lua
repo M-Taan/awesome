@@ -325,24 +325,24 @@ globalkeys = gears.table.join(
 
         awful.key({}, "XF86AudioLowerVolume", function() os.execute ("amixer -D pulse sset Master 5%-") end,
        {description = "+5% volume", group = "hotkeys"}),
-    
+
     -- Standalone programs
     awful.key({ modkey, "Shift"}, "a", function () awful.spawn("pavucontrol") end,
        {description = "open pavucontrol", group = "Standalone Programs"}),
-    
+
     awful.key({ modkey, "Shift"}, "n", function () awful.spawn("nm-connection-editor") end,
        {description = "open networks editor", group = "Standalone Programs"}),
 
     awful.key({ modkey, "Shift"}, "b", function () awful.spawn(browser) end,
        {description = "open browser", group = "Standalone Programs"}),
 
-    awful.key({ modkey, "Shift"}, "e", function () awful.spawn("emacsclient -c /home/mmt/") end,
+    awful.key({ modkey, "Shift"}, "e", function () awful.spawn.with_shell("emacsclient -c $HOME") end,
        {description = "open emacs", group = "Standalone Programs"}),
-       
+
    -- Misc
-   awful.key({}, "Print", function () awful.spawn.with_shell("maim -s -u $HOME/Pictures/screenshots/$(date +%s).png && notify-send  --icon=$HOME/.config/awesome/common/custom          _notification_icon.png 'saved and copied to the clipboard'") end,
+   awful.key({}, "Print", function () awful.spawn.with_shell("maim -s -u $HOME/Pictures/screenshots/$(date +%s).png && notify-send  --icon=$HOME/.config/awesome/common/custom_notification_icon.png 'saved and copied to the clipboard'") end,
       {description = "takes a screenshot using mime", group = "hotkeys"}),
-      
+
    awful.key({ modkey }, "Delete", function () awful.spawn("dm-tool lock") end,
        {description = "lock screen", group = "hotkeys"})
 )
@@ -474,6 +474,10 @@ awful.rules.rules = {
                      placement = awful.placement.no_overlap+awful.placement.no_offscreen
      }
     },
+
+    -- Emacs
+    { rule = { class = "Emacs" },
+     properties = { size_hints_honor = false } },
 
     -- Floating clients.
     { rule_any = {
