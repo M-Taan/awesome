@@ -70,7 +70,7 @@ theme.widget_vol_mute                           = theme.dir .. "/icons/vol_mute.
 theme.tasklist_plain_task_name                  = true
 theme.tasklist_disable_icon                     = true
 theme.useless_gap                               = 3
-theme.systray_icon_spacing                      = 1
+theme.systray_icon_spacing                      = 0
 
 local markup = lain.util.markup
 local separators = lain.util.separators
@@ -209,7 +209,7 @@ end)
 
 -- Separators
 local arrow = separators.arrow_left
-local space_sep = wibox.widget.textbox("  ")
+local space_sep = wibox.widget.textbox(" ")
 
 function theme.powerline_rl(cr, width, height)
     local arrow_depth, offset = height/2, 0
