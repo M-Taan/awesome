@@ -70,7 +70,7 @@ theme.widget_vol_mute                           = theme.dir .. "/icons/vol_mute.
 theme.tasklist_plain_task_name                  = true
 theme.tasklist_disable_icon                     = true
 theme.useless_gap                               = 3
-theme.systray_icon_spacing                      = 5
+theme.systray_icon_spacing                      = 1
 
 local markup = lain.util.markup
 local separators = lain.util.separators
@@ -281,7 +281,7 @@ function theme.at_screen_connect(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            wibox.widget.systray(),
+            wibox.layout.margin(wibox.widget.systray(), 1, 1, 1, 1),
             space_sep,
             --pl(wibox.widget { mpdicon, theme.mpd.widget, layout = wibox.layout.align.horizontal }, "#343434"),
             --pl(wibox.widget { mailicon, mail and theme.mail.widget, layout = wibox.layout.align.horizontal }, "#343434"),
