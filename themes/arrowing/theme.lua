@@ -188,12 +188,6 @@ local neticon = wibox.widget.imagebox(theme.widget_net)
 local net = lain.widget.net({
     settings = function()
        widget:set_markup(markup.fontfg(theme.font, "#FEFEFE", " " .. net_now.received .. " ↓↑ " .. net_now.sent .. " "))
-       widget:buttons(my_table.join(
-                         awful.button({}, 1,
-                            function() awful.spawn.with_shell("nm-applet") end)))
-       neticon:buttons(my_table.join(
-                         awful.button({}, 1,
-                            function() awful.spawn.with_shell("nm-applet") end)))
     end
 })
 
