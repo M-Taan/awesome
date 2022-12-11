@@ -336,7 +336,7 @@ globalkeys = gears.table.join(
     awful.key({ modkey, "Shift"}, "b", function () awful.spawn(browser) end,
        {description = "open browser", group = "Standalone Programs"}),
 
-    awful.key({ modkey, "Shift"}, "e", function () awful.spawn.with_shell("emacsclient -c $HOME") end,
+    awful.key({ modkey, "Shift"}, "e", function () awful.spawn.with_shell("emacsclient -c") end,
        {description = "open emacs", group = "Standalone Programs"}),
 
    -- Misc

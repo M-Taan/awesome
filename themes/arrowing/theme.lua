@@ -71,6 +71,9 @@ theme.tasklist_plain_task_name                  = true
 theme.tasklist_disable_icon                     = true
 theme.useless_gap                               = 3
 theme.systray_icon_spacing                      = 0
+theme.primary_100                               = "#124F7B"
+theme.primary_200                               = "#DB8E73"
+theme.primary_300                               = "#68217A"
 
 local markup = lain.util.markup
 local separators = lain.util.separators
@@ -279,14 +282,14 @@ function theme.at_screen_connect(s)
             space_sep,
             --pl(wibox.widget { mpdicon, theme.mpd.widget, layout = wibox.layout.align.horizontal }, "#343434"),
             --pl(wibox.widget { mailicon, mail and theme.mail.widget, layout = wibox.layout.align.horizontal }, "#343434"),
-            pl(wibox.widget { memicon, mem.widget, layout = wibox.layout.align.horizontal }, "#00BBC0"),
-            pl(wibox.widget { cpuicon, cpu.widget, layout = wibox.layout.align.horizontal }, "#525253"),
+            pl(wibox.widget { memicon, mem.widget, layout = wibox.layout.align.horizontal }, theme.primary_300),
+            pl(wibox.widget { cpuicon, cpu.widget, layout = wibox.layout.align.horizontal }, theme.primary_200),
             --pl(wibox.widget { fsicon, theme.fs and theme.fs.widget, layout = wibox.layout.align.horizontal }, "#CB755B"),
-            pl(wibox.widget { volicon, theme.volume.widget, layout = wibox.layout.align.horizontal }, "#E91E63"),
-            pl(wibox.widget { baticon, bat.widget, layout = wibox.layout.align.horizontal }, "#00BBC0"),
-            pl(wibox.widget { neticon, net.widget, layout = wibox.layout.align.horizontal }, "#525253"),
+            pl(wibox.widget { volicon, theme.volume.widget, layout = wibox.layout.align.horizontal }, theme.primary_100),
+            pl(wibox.widget { baticon, bat.widget, layout = wibox.layout.align.horizontal }, theme.primary_300),
+            pl(wibox.widget { neticon, net.widget, layout = wibox.layout.align.horizontal }, theme.primary_200),
             --pl(binclock.widget, "#777E76"),
-            pl(mytextclock, "#E91E63"),
+            pl(mytextclock, theme.primary_100),
             s.mylayoutbox,
         },
     }
