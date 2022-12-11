@@ -319,12 +319,24 @@ globalkeys = gears.table.join(
     awful.key({ }, "XF86MonBrightnessDown", function () os.execute("light -U 10") end,
               {description = "-10% brightness", group = "hotkeys"}),
 
-    -- volume control
+    -- Audio control
     awful.key({}, "XF86AudioRaiseVolume", function() os.execute ("amixer -D pulse sset Master 5%+") end,
        {description = "+5% volume", group = "hotkeys"}),
 
-        awful.key({}, "XF86AudioLowerVolume", function() os.execute ("amixer -D pulse sset Master 5%-") end,
+    awful.key({}, "XF86AudioLowerVolume", function() os.execute ("amixer -D pulse sset Master 5%-") end,
        {description = "+5% volume", group = "hotkeys"}),
+
+    awful.key({}, "XF86AudioPlay", function () os.execute("playerctl --all-players play") end,
+       {description = "Play", group = "hotkeys"}),
+
+    awful.key({}, "XF86AudioPause", function () os.execute("playerctl --all-players pause") end,
+       {description = "Pause", group = "hotkeys"}),
+
+    awful.key({}, "XF86AudioNext", function () os.execute("playerctl --all-players next") end,
+       {description = "Play Next", group = "hotkeys"}),
+
+    awful.key({}, "XF86AudioPrev", function () os.execute("playerctl --all-players previous") end,
+       {description = "Play Previous", group = "hotkeys"}),
 
     -- Standalone programs
     awful.key({ modkey, "Shift"}, "a", function () awful.spawn("pavucontrol") end,
