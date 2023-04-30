@@ -600,5 +600,5 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- startup stuff
 awful.spawn.with_shell("blueman-applet")
 awful.spawn.with_shell("nm-applet")
-awful.spawn.with_shell("/usr/bin/emacs --daemon &")
+awful.spawn.with_shell("/usr/bin/emacs --daemon")
 awful.spawn.with_shell("nitrogen --restore")

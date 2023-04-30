@@ -32,7 +32,7 @@ theme.border_normal                             = "#3F3F3F"
 theme.border_focus                              = "#6F6F6F"
 theme.border_marked                             = "#CC9393"
 theme.menu_height                               = dpi(16)
-theme.menu_width                                = dpi(140)
+theme.menu_width                                = dpi(144)
 theme.menu_submenu_icon                         = theme.dir .. "/icons/submenu.png"
 theme.awesome_icon                              = theme.dir .. "/icons/awesome.png"
 theme.taglist_squares_sel                       = theme.dir .. "/icons/square_sel.png"
@@ -69,7 +69,7 @@ theme.widget_vol_no                             = theme.dir .. "/icons/vol_no.pn
 theme.widget_vol_mute                           = theme.dir .. "/icons/vol_mute.png"
 theme.tasklist_plain_task_name                  = true
 theme.tasklist_disable_icon                     = true
-theme.useless_gap                               = 3
+theme.useless_gap                               = 4
 theme.systray_icon_spacing                      = 0
 theme.primary_100                               = "#124F7B"
 theme.primary_200                               = "#DB8E73"
@@ -79,7 +79,7 @@ local markup = lain.util.markup
 local separators = lain.util.separators
 
 local mytextclock = wibox.widget {
-    format = "%a %b %d, %l:%M %p ",
+   format = "%a %b %d, %l:%M %p",
     widget = wibox.widget.textclock,
     font = theme.font
 }
