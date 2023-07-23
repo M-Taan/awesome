@@ -228,7 +228,7 @@ function theme.powerline_rl(cr, width, height)
 end
 
 local function pl(widget, bgcolor, padding)
-    return wibox.container.background(wibox.container.margin(widget, dpi(16), dpi(16)), bgcolor, theme.powerline_rl)
+    return wibox.container.background(wibox.container.margin(widget, dpi(16), dpi(14)), bgcolor, theme.powerline_rl)
 end
 
 function theme.at_screen_connect(s)

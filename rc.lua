@@ -64,7 +64,7 @@ end
 local chosen_theme = "arrowing"
 local modkey       = "Mod4"
 local altkey       = "Mod1"
-local terminal     = "alacritty"
+local terminal     = "kitty"
 local vi_focus     = false -- vi-like client focus https://github.com/lcpz/awesome-copycats/issues/275
 local cycle_prev   = true  -- cycle with only the previously focused client or all https://github.com/lcpz/awesome-copycats/issues/274
 local editor       = os.getenv("EDITOR") or "emacs"
@@ -600,5 +600,5 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- startup stuff
 awful.spawn.with_shell("blueman-applet")
 awful.spawn.with_shell("nm-applet")
-awful.spawn.with_shell("/usr/bin/emacs --daemon")
+awful.spawn.with_shell("/usr/local/bin/emacs --daemon")
 awful.spawn.with_shell("nitrogen --restore")
